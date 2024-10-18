@@ -1,0 +1,10 @@
+.iconInput {
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid cornflowerblue;
+  margin: 5px;
+  border-radius: 4px;
+}
+.iconInput:hover {
+  background-color: whitesmoke;
+}

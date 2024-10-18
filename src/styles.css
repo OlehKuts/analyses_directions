@@ -1,0 +1,185 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1010px;
+  margin: 0 auto;
+}
+
+.header,
+.nameAdress,
+.secondHeader,
+.block {
+  border-bottom: 1px solid black;
+}
+.headerPart1 {
+  border-right: 1px solid black;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.heading {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 5px auto 10px auto;
+}
+.headerPart {
+  width: 50%;
+}
+.secondHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  font-weight: bold;
+}
+.block {
+  display: flex;
+  align-items: center;
+  width: 96%;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.mainBlock {
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(2, 500px);
+}
+.footer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.footerLeft {
+  width: 35%;
+  text-align: center;
+}
+.empty {
+  height: 80px;
+}
+.super {
+  display: flex;
+  flex-direction: row;
+}
+.dateForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: start;
+  border: 1px solid black;
+  box-shadow: 0 0 4px 1px;
+  width: 420px;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: whitesmoke;
+}
+#specialLine {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+select,
+button,
+.submit {
+  height: 2.4rem !important;
+  border: 2px solid #555555;
+  width: 10rem;
+  border-radius: 0.4rem;
+  transition-duration: 0.2s;
+  margin: 0.2rem;
+}
+input {
+  border: 2px solid #555555;
+  width: 10rem;
+  border-radius: 0.4rem;
+  transition-duration: 0.2s;
+  size: 1.2rem;
+  height: 2rem;
+  margin: 0.2rem;
+}
+.submit,
+button {
+  cursor: pointer;
+}
+select:hover {
+  background-color: silver;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+.submit:hover,
+button:hover {
+  background-color: #555555;
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+.checkbox {
+  width: 1.5rem;
+  height: 1.2rem;
+  margin: 0;
+  padding: 0;
+}
+label {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+.mediumInput {
+  width: 16rem;
+}
+.longInput {
+  width: 24rem;
+}
+select {
+  width: 10.5rem;
+}
+#sendLine {
+  text-align: center;
+}
+.likeLabel {
+  font-size: 1.2rem;
+  margin-top: 0;
+  padding-bottom: 10px;
+}
+.controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
+}
+#activeBtn {
+  background-color: orange;
+  color: white;
+}
+.centered {
+  text-align: center;
+  margin: 6px auto;
+}
+.analyseLine {
+  border-bottom: 2px solid silver;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 480px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.analyseLine div {
+  font-size: 22px !important;
+}
+.analyseItem {
+  width: 500px;
+  margin: 0 auto;
+  border: 1px solid black;
+}
+#lettersSelect {
+  width: 5rem;
+}
+.ownExaminations {
+  display: flex;
+  flex-direction: row;
+}
