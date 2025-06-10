@@ -1914,9 +1914,12 @@ export const letters = [
 export const analyses = [
   {
     name: "загальний аналіз крові + час згортання та тривалість кровотечі",
-    feature: "Примітки",
+    feature: "Примітки", needDirection: true
   },
-  { name: "загальний аналіз сечі", feature: "Примітки" },
-  { name: "аналіз крові на групу та резус-фактор ", feature: "Група крові" },
-  { name: "глюкоза крові", feature: "Примітки" },
+  { name: "загальний аналіз сечі", feature: "Примітки", needDirection: true },
+  { name: "аналіз крові на групу та резус-фактор ", feature: "Група крові", needDirection: true },
+  { name: "глюкоза крові", feature: "Примітки", needDirection: true },
+  { name: "коагулограма", feature: "Примітки", needDirection: true },
+  { name: "ЕКГ", feature: "Примітки", needDirection: false },
+
 ];

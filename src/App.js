@@ -288,7 +288,7 @@ export const App = () => {
                 placeholder="введіть назву обстеження..."
               />
               <button
-                disabled={ownExaminations.length > 5 ? true : false}
+                disabled={ownExaminations.length > 7 ? true : false}
                 onClick={() => {
                   setOwnExaminations((prev) => {
                     if (!currentExamination.length) return;

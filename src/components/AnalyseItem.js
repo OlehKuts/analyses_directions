@@ -44,13 +44,13 @@ export const AnalyseItem = ({ patient, analyse, ...props }) => {
         {""}
         <Text>{diagnosis}</Text>
       </div>
-      <div className="analyseLine">
+      { analyse.needDirection ?  <div className="analyseLine">
         <Text fontWeight="bold" marginRight="10px" {...props}>
           № електронного направлення
         </Text>
         {""}
         <Text fontWeight="bold">{directionNumber}</Text>
-      </div>
+      </div> : null}
       <div className="analyseLine">
         <Text fontWeight="bold" marginRight="10px" {...props}>
           Лікар
