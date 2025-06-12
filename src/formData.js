@@ -1,5 +1,19 @@
 // import { numArrayCreator } from "./utilities/numArrayCreator";
 // export const defermentList = numArrayCreator(0,31);
+
+export const analyses = [
+  {
+    id: 1, name: "загальний аналіз крові", feature: "Примітки", needDirection: true, shortName: "ЗАК"
+  },
+  { id: 2, name: "загальний аналіз сечі", feature: "Примітки", needDirection: true, shortName: "ЗАС" },
+  { id: 3, name: "аналіз крові на групу та резус-фактор ", feature: "Група крові", needDirection: true, shortName: "Група крові" },
+  { id: 4, name: "глюкоза крові", feature: "Примітки", needDirection: true, shortName: "Глюкоза" },
+  { id: 5, name: "коагулограма", feature: "Примітки", needDirection: true, shortName: "Коагулограма" },
+  { id: 6, name: "ЕКГ", feature: "Примітки", needDirection: false, shortName: "ЕКГ" },
+];
+export const examinationTemplate =  {
+    name: "", feature: "Примітки", needDirection: true, shortName: ""
+  }
 export const doctors = [
   { name: "Особистий лікар", value: "" },
   { name: "Брик Л.М.", value: "Брик Л.М." },
@@ -1911,15 +1925,4 @@ export const letters = [
   { name: "Ж", value: "Ж" },
   { name: "З", value: "З" },
 ];
-export const analyses = [
-  {
-    name: "загальний аналіз крові + час згортання та тривалість кровотечі",
-    feature: "Примітки", needDirection: true
-  },
-  { name: "загальний аналіз сечі", feature: "Примітки", needDirection: true },
-  { name: "аналіз крові на групу та резус-фактор ", feature: "Група крові", needDirection: true },
-  { name: "глюкоза крові", feature: "Примітки", needDirection: true },
-  { name: "коагулограма", feature: "Примітки", needDirection: true },
-  { name: "ЕКГ", feature: "Примітки", needDirection: false },
 
-];

@@ -1,29 +1,30 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import "./styles.css";
 import {
   msDiagonosis,
   lorDiagonosis,
   doctors,
   townList,
-  districtList,
-  letters,
+  // districtList,
+  // letters,
   analyses,
+  examinationTemplate
 } from "./formData";
-import { numArrayCreator, getResidence } from "./utils/utils";
+// import { numArrayCreator, getResidence } from "./utils/utils";
 import { AnalyseItem } from "./components/AnalyseItem";
 import { IconInput } from "./UI/input/IconInput";
 
 export const App = () => {
   const [showForm, setShowForm] = useState(true);
   const [showControls, setShowControls] = useState(false);
-  const buildingNumber = ["Номер будинку..."];
-  const flatNumber = ["Номер квартири..."];
-  const streetsHeader = [{ name: "Вулиця...", value: "" }];
+  // const buildingNumber = ["Номер будинку..."];
+  // const flatNumber = ["Номер квартири..."];
+  // const streetsHeader = [{ name: "Вулиця...", value: "" }];
 
-  const numbers = numArrayCreator(1, 200);
-  const buildingNumbers = [...buildingNumber, ...numbers];
+  // const numbers = numArrayCreator(1, 200);
+  // const buildingNumbers = [...buildingNumber, ...numbers];
 
-  const flatNumbers = [...flatNumber, ...numbers];
+  // const flatNumbers = [...flatNumber, ...numbers];
   const [diagnosisList, setDiagnosisList] = useState(lorDiagonosis);
   const [patient, setPatient] = useState({
     name: "",
@@ -33,36 +34,42 @@ export const App = () => {
     residence: "",
     directionNumber: "",
   });
-  const [residenceFeatures, setResidenceFeatures] = useState({
-    town: "",
-    street: "",
-    district: "",
-    adress: "",
-    fullAdress: "",
-    building: "",
-    letter: "",
-    flat: "",
-  });
-  const [currentExamination, setCurrentExamination] = useState("");
+  // const [residenceFeatures, setResidenceFeatures] = useState({
+  //   town: "",
+  //   street: "",
+  //   district: "",
+  //   adress: "",
+  //   fullAdress: "",
+  //   building: "",
+  //   letter: "",
+  //   flat: "",
+  // });
+  const [residence, setResidence] = useState("");
+  const [currentExaminationName, setCurrentExaminationName] = useState("");
   const [ownExaminations, setOwnExaminations] = useState(analyses);
-  const [currentStreets, setCurrentStreets] = useState(townList[0].streets);
-  const getStreets = (cityList, currentCity) => {
-    const city = cityList.find((item) => item.value === currentCity);
-    const mappedList = city.streets.map((item) => {
-      return { name: item.name, value: item.name };
-    });
-    const finalList = [...streetsHeader, ...mappedList];
-    return finalList;
-  };
-
+  // const [currentStreets, setCurrentStreets] = useState(townList[0].streets);
+  // const getStreets = (cityList, currentCity) => {
+  //   const city = cityList.find((item) => item.value === currentCity);
+  //   const mappedList = city.streets.map((item) => {
+  //     return { name: item.name, value: item.name };
+  //   });
+  //   const finalList = [...streetsHeader, ...mappedList];
+  //   return finalList;
+  // };
+  const deleteAnalyse = (analyseId) => {
+    setOwnExaminations(ownExaminations.filter(item => item.id !== analyseId))
+  }
+  const analyseNames = useMemo( () => {
+    return ownExaminations.map(item => {return {name: item.shortName, id: item.id}})
+  }, [ownExaminations])
   console.log(ownExaminations);
-  useEffect(() => {
-    setCurrentStreets(getStreets(townList, residenceFeatures.town));
-  }, [residenceFeatures.town]);
+  // useEffect(() => {
+  //   setCurrentStreets(getStreets(townList, residenceFeatures.town));
+  // }, [residenceFeatures.town]);
   return (
     <div className="App">
       <>
-        {showForm && <div className="heading">Заповніть форму</div>}
+        {/* {showForm && <div className="heading">Заповніть форму</div>} */}
         {showForm && (
           <div className="dateForm">
             <div className="formLine">
@@ -80,7 +87,7 @@ export const App = () => {
               </button>
             </div>{" "}
             <div id="specialLine">
-              <IconInput
+              <input
                 value={patient.name}
                 onChange={(e) =>
                   setPatient({ ...patient, name: e.target.value })
@@ -89,7 +96,7 @@ export const App = () => {
                   patient.name.length > 10 && patient.name.includes(" ")
                 }
                 placeholder="Пацієнт..."
-                className="mediumInput"
+                className="longInput"
               />
             </div>
             <div className="formLine">
@@ -118,6 +125,7 @@ export const App = () => {
             <div className="formLine">
               <label>Патологія</label>
               <select
+                className="mediumSelect"
                 value={patient.diagnosis}
                 onChange={(e) =>
                   setPatient({ ...patient, diagnosis: e.target.value })
@@ -143,15 +151,13 @@ export const App = () => {
               />
             </div>
             <div>
-              <div className="centered">Для жителя міста</div>
+              {/* <div className="centered">Для жителя міста</div> */}
               <div className="formLine">
                 <select
-                  value={residenceFeatures.town}
+                className="longSelect"
+                  value={residence}
                   onChange={(e) =>
-                    setResidenceFeatures({
-                      ...residenceFeatures,
-                      town: e.target.value,
-                    })
+                    setResidence(e.target.value)
                   }
                 >
                   {townList.map((item, idx) => {
@@ -162,7 +168,7 @@ export const App = () => {
                     );
                   })}
                 </select>
-                <select
+                 {/* <select
                   value={residenceFeatures.street}
                   onChange={(e) =>
                     setResidenceFeatures({
@@ -178,10 +184,10 @@ export const App = () => {
                       </option>
                     );
                   })}
-                </select>
+                </select>  */}
               </div>
               <div className="formLine">
-                <select
+                {/* <select
                   value={residenceFeatures.building}
                   onChange={(e) =>
                     setResidenceFeatures({
@@ -197,8 +203,8 @@ export const App = () => {
                       </option>
                     );
                   })}
-                </select>
-                <select
+                </select> */}
+                {/* <select
                   id="lettersSelect"
                   value={residenceFeatures.letter}
                   onChange={(e) =>
@@ -215,8 +221,8 @@ export const App = () => {
                       </option>
                     );
                   })}
-                </select>
-                <select
+                </select> */}
+                {/* <select
                   value={residenceFeatures.flat}
                   onChange={(e) =>
                     setResidenceFeatures({
@@ -232,12 +238,12 @@ export const App = () => {
                       </option>
                     );
                   })}
-                </select>
+                </select> */}
               </div>
             </div>
             <div>
-              <div className="centered">Для сільського мешканця</div>
-              <select
+              {/* <div className="centered">Для сільського мешканця</div> */}
+              {/* <select
                 value={residenceFeatures.district}
                 onChange={(e) =>
                   setResidenceFeatures({
@@ -263,48 +269,51 @@ export const App = () => {
                   })
                 }
                 placeholder="назва села або СМТ..."
-              />
+              /> */}
             </div>
             <div>
-              <div className="centered">Для жителя іншої області</div>
               <input
                 className="longInput"
-                value={residenceFeatures.fullAdress}
+                value={residence}
                 onChange={(e) =>
-                  setResidenceFeatures({
-                    ...residenceFeatures,
-                    fullAdress: e.target.value,
-                  })
+                  setResidence(e.target.value)
                 }
-                placeholder="введіть повну адресу..."
+                placeholder="введіть адресу..."
               />
+            </div>
+            <div className="smallAnalyseBlock">
+                {analyseNames.map(item => <div key={item.id} className="smallAnalyse"
+                onClick={() => deleteAnalyse(item.id)}>
+                  {item.name}
+                </div>)}
             </div>
             <div className="centered">Додати власне обстеження</div>
             <div className="ownExaminations">
               <input
-                className="mediumInput"
-                value={currentExamination}
-                onChange={(e) => setCurrentExamination(e.target.value)}
-                placeholder="введіть назву обстеження..."
+                // className="mediumInput"
+                value={currentExaminationName}
+                onChange={(e) => setCurrentExaminationName(e.target.value)}
+                placeholder="назва обстеження..."
               />
               <button
                 disabled={ownExaminations.length > 7 ? true : false}
                 onClick={() => {
                   setOwnExaminations((prev) => {
-                    if (!currentExamination.length) return;
+                    if (!currentExaminationName.length) return;
                     return [
                       ...prev,
-                      { name: currentExamination, feature: "Примітки" },
+                      { ...examinationTemplate, name: currentExaminationName, shortName: `${currentExaminationName.slice(0,8)}...`, id: Math.random()},
                     ];
                   });
-                  setCurrentExamination("");
-                  alert("Додано в обстеження");
+                  setCurrentExaminationName("");
+                  alert("Додано в перелік обстежень");
                 }}
               >
                 Додати
               </button>
             </div>
             <div>
+              <hr />
               <button
                 onClick={() => {
                   if (
@@ -318,7 +327,7 @@ export const App = () => {
                   }
                   setPatient({
                     ...patient,
-                    residence: getResidence(residenceFeatures),
+                    residence: residence
                   });
                   setShowForm(false);
                   setShowControls(true);
