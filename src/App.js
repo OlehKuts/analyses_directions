@@ -290,13 +290,12 @@ export const App = () => {
             <div className="centered">Додати власне обстеження</div>
             <div className="ownExaminations">
               <input
-                // className="mediumInput"
                 value={currentExaminationName}
                 onChange={(e) => setCurrentExaminationName(e.target.value)}
                 placeholder="назва обстеження..."
               />
               <button
-                disabled={ownExaminations.length > 7 ? true : false}
+                disabled={ownExaminations.length > 7 || !currentExaminationName.length ? true : false}
                 onClick={() => {
                   setOwnExaminations((prev) => {
                     if (!currentExaminationName.length) return;
@@ -355,7 +354,9 @@ export const App = () => {
             <button onClick={() => setShowControls(false)}>
               Готово до друку
             </button>
-            <button onClick={() => setShowForm(true)}>Виправити форму</button>
+            <button onClick={() => {
+              setShowForm(true)
+              setShowControls(false)}}>Виправити форму</button>
           </div>
         )}
       </>
