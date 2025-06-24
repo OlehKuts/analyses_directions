@@ -69,7 +69,7 @@ export const AnalyseItem = ({ patient, analyse, ...props }) => {
           {analyse.feature}
         </Text>
         {""}
-        <Text></Text>
+        <Text>ЛОР</Text>
       </div>
     </div>
   );

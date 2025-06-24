@@ -3,7 +3,7 @@
 
 export const analyses = [
   {
-    id: 1, name: "загальний аналіз крові", feature: "Примітки", needDirection: true, shortName: "ЗАК"
+    id: 1, name: "загальний аналіз крові", feature: "Відділення", needDirection: true, shortName: "ЗАК"
   },
   { id: 2, name: "загальний аналіз сечі", feature: "Примітки", needDirection: true, shortName: "ЗАС" },
   { id: 3, name: "аналіз крові на групу та резус-фактор ", feature: "Група крові", needDirection: true, shortName: "Група крові" },
