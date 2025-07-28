@@ -1,30 +1,18 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import "./styles.css";
 import {
   msDiagonosis,
   lorDiagonosis,
   doctors,
   townList,
-  // districtList,
-  // letters,
   analyses,
   examinationTemplate
 } from "./formData";
-// import { numArrayCreator, getResidence } from "./utils/utils";
 import { AnalyseItem } from "./components/AnalyseItem";
-import { IconInput } from "./UI/input/IconInput";
 
 export const App = () => {
   const [showForm, setShowForm] = useState(true);
   const [showControls, setShowControls] = useState(false);
-  // const buildingNumber = ["Номер будинку..."];
-  // const flatNumber = ["Номер квартири..."];
-  // const streetsHeader = [{ name: "Вулиця...", value: "" }];
-
-  // const numbers = numArrayCreator(1, 200);
-  // const buildingNumbers = [...buildingNumber, ...numbers];
-
-  // const flatNumbers = [...flatNumber, ...numbers];
   const [diagnosisList, setDiagnosisList] = useState(lorDiagonosis);
   const [patient, setPatient] = useState({
     name: "",
@@ -34,28 +22,10 @@ export const App = () => {
     residence: "",
     directionNumber: "",
   });
-  // const [residenceFeatures, setResidenceFeatures] = useState({
-  //   town: "",
-  //   street: "",
-  //   district: "",
-  //   adress: "",
-  //   fullAdress: "",
-  //   building: "",
-  //   letter: "",
-  //   flat: "",
-  // });
   const [residence, setResidence] = useState("");
   const [currentExaminationName, setCurrentExaminationName] = useState("");
-  const [ownExaminations, setOwnExaminations] = useState(analyses);
-  // const [currentStreets, setCurrentStreets] = useState(townList[0].streets);
-  // const getStreets = (cityList, currentCity) => {
-  //   const city = cityList.find((item) => item.value === currentCity);
-  //   const mappedList = city.streets.map((item) => {
-  //     return { name: item.name, value: item.name };
-  //   });
-  //   const finalList = [...streetsHeader, ...mappedList];
-  //   return finalList;
-  // };
+  const [ownExaminations, setOwnExaminations] = useState([...analyses].filter(item => !item.dentistryOnly));
+  
   const deleteAnalyse = (analyseId) => {
     setOwnExaminations(ownExaminations.filter(item => item.id !== analyseId))
   }
@@ -63,9 +33,6 @@ export const App = () => {
     return ownExaminations.map(item => {return {name: item.shortName, id: item.id}})
   }, [ownExaminations])
   console.log(ownExaminations);
-  // useEffect(() => {
-  //   setCurrentStreets(getStreets(townList, residenceFeatures.town));
-  // }, [residenceFeatures.town]);
   return (
     <div className="App">
       <>
@@ -74,13 +41,17 @@ export const App = () => {
           <div className="dateForm">
             <div className="formLine">
               <button
-                onClick={() => setDiagnosisList(lorDiagonosis)}
+                onClick={() => {setDiagnosisList(lorDiagonosis)
+                  setOwnExaminations(analyses.filter(item => !item.dentistryOnly))
+                }}
                 id={diagnosisList === lorDiagonosis ? "activeBtn" : ""}
               >
                 ЛОР
               </button>
               <button
-                onClick={() => setDiagnosisList(msDiagonosis)}
+                onClick={() => {setDiagnosisList(msDiagonosis)
+                  setOwnExaminations(analyses)
+                }}
                 id={diagnosisList === msDiagonosis ? "activeBtn" : ""}
               >
                 ЩЛХ
