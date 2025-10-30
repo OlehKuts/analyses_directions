@@ -10,7 +10,7 @@ export const analyses = [
   { id: 4, name: "глюкоза крові", feature: "Примітки", needDirection: true, shortName: "Глюкоза" },
   { id: 5, name: "коагулограма", feature: "Примітки", needDirection: true, shortName: "Коагулограма" },
   { id: 6, name: "ЕКГ", feature: "Примітки", needDirection: false, shortName: "ЕКГ" },
-  { id: 6, name: "Біохім. аналіз крові (креатинін, сечовина, K, Na, Ca)", feature: "Примітки", needDirection: true, shortName: "Біохімічний", dentistryOnly: true },
+  { id: 7, name: "Біохім. аналіз крові (креатинін, сечовина, K, Na, Ca)", feature: "Примітки", needDirection: true, shortName: "Біохімічний", dentistryOnly: true },
 ];
 export const examinationTemplate =  {
     name: "", feature: "Примітки", needDirection: true, shortName: ""
