@@ -12,6 +12,7 @@ export const analyses = [
   { id: 6, name: "ЕКГ", feature: "Примітки", needDirection: false, shortName: "ЕКГ" },
   { id: 7, name: "Біохім. аналіз крові (креатинін, сечовина, K, Na, Ca)", feature: "Примітки", needDirection: true, shortName: "Біохімічний", dentistryOnly: true },
 ];
+//
 export const examinationTemplate =  {
     name: "", feature: "Примітки", needDirection: true, shortName: ""
   }
